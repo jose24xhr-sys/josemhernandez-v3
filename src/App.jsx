@@ -182,7 +182,6 @@ export default function App() {
 
 
   return ( 
-        <div className={darkMode ? 'dark' : ''}>
     <main className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-[#0F1720] dark:text-neutral-100">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
@@ -247,7 +246,7 @@ export default function App() {
 
 
         {/* HERO */}
-        <section id="home" ref={heroSentinelRef}  className="mx-auto max-w-4xl px-4 pt-6 md:pt-10">
+        <section id="home" ref={heroRef}  className="mx-auto max-w-4xl px-4 pt-6 md:pt-10">
           <div className="mx-auto max-w-[52rem] md:pl-5">
             <div className="grid grid-cols-[auto,1fr] items-center gap-4">
               <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" className="inline-block">
@@ -293,21 +292,26 @@ export default function App() {
         </section>
 
         {/* PROJECTS */}
-        <section id="projects" className="mx-auto max-w-[52rem] px-5 md:px-3 pt-6 md:pt-8 pb-6 md:pb-8 section-fade js-reveal">
-<h2 className="flex items-center gap-2 text-xl font-semibold mb-6 md:mb-8">
-  <BookOpen className="h-5 w-5 shrink-0" />
-  Projects
-</h2>
-          <div className="space-y-6 md:space-y-8">
-            {projects.map((p, i) => (
-              <article key={i} className="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900">
-                <div className="text-sm text-neutral-500 dark:text-neutral-400">{p.year}</div>
-                <h3 className="mt-1 text-lg font-semibold flex items-center gap-2">{p.title}<a className="inline-flex" href={p.link}><ArrowUpRight className="h-4 w-4" /></a></h3>
-                <p className="mt-2 text-neutral-700 dark:text-neutral-300">{p.body}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+      <section id="projects" className="mx-auto max-w-[52rem] px-5 md:px-3 pt-6 md:pt-8 pb-6 md:pb-8">
+        <h2 className="flex items-center gap-2 text-xl font-semibold mb-6 md:mb-8">
+          <BookOpen className="h-5 w-5 shrink-0" />
+          Projects
+        </h2>
+        <div className="space-y-6 md:space-y-8">
+          {projects.map((p, i) => (
+            <article key={i} className="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900">
+              <div className="text-sm text-neutral-500 dark:text-neutral-400">{p.year}</div>
+              <h3 className="mt-1 text-lg font-semibold flex items-center gap-2">
+                {p.title}
+                <a className="inline-flex" href={p.link}><ArrowUpRight className="h-4 w-4" /></a>
+              </h3>
+              <div className="mt-2 text-neutral-700 dark:text-neutral-300">
+                {p.body}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
         {/* AWARDS */}
         <section
@@ -349,6 +353,5 @@ export default function App() {
           <footer className="mt-16 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} {profile.name}</footer>
         </section>
       </main>
-</div>
   );
 }
