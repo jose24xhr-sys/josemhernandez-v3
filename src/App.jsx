@@ -153,7 +153,7 @@ export default function App() {
     // persistencia y preferencia del SO
     const saved = localStorage.getItem("theme");
     if (saved) return saved === "dark";
-    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
+    return document.documentElement.classList.contains('dark');
   });
   const [mounted, setMounted] = useState(false);
   const [inHero, setInHero] = useState(true);
@@ -163,10 +163,8 @@ export default function App() {
 
   // aplica/quita clase dark al <html> (robusto para todo el sitio)
   useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) root.classList.add("dark");
-    else root.classList.remove("dark");
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
+     document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
   // observa si el hero está en pantalla para mostrar/ocultar el nombre en el header
@@ -183,8 +181,7 @@ export default function App() {
 
 
 
-  return (
-    <div className={darkMode ? "dark" : ""}>
+  return ( 
       <main className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-[#0F1720] dark:text-neutral-100">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80 will-change-[opacity,transform]">
@@ -225,8 +222,7 @@ export default function App() {
               <div className="w-[64px] h-8 relative">
                 <div className={`transition-opacity duration-200 ease-out will-change-[opacity] ${mounted && !inHero ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
                   <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
-                </div>
-              </div>
+      </div>
             </div>
           </nav>
         </header>
