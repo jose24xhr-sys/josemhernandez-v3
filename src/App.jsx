@@ -238,15 +238,15 @@ const [darkMode, setDarkMode] = useState(() => {
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
         <div ref={heroSentinelRef} className="h-0" />
         {inHero && (
-  <div className="mx-auto max-w-4xl px-4 pt-2 pb-2 flex justify-start">
-    <div className="w-[64px]">
+  <button
+    className="fixed bottom-6 left-6 z-50"
+    aria-label="Theme toggle floating"
+  >
       <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
-    </div>
-  </div>
 )}
 
         {/* HERO */}
-        <section id="home" className="mx-auto max-w-4xl px-4 pt-6 md:pt-10 section-fade js-reveal">
+        <section id="home" ref={heroRef}  className="mx-auto max-w-4xl px-4 pt-6 md:pt-10">
           <div className="mx-auto max-w-[52rem] md:pl-5">
             <div className="grid grid-cols-[auto,1fr] items-center gap-4">
               <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" className="inline-block">
