@@ -152,10 +152,7 @@ function ThemeToggle({ checked, onToggle, className = "" }) {
 export default function App() {
   // theme + sticky name
   const [darkMode, setDarkMode] = useState(() => {
-    // persistencia y preferencia del SO
-    const saved = localStorage.getItem("theme");
-    if (saved) return saved === "dark";
-    return document.documentElement.classList.contains('dark');
+     document.documentElement.classList.contains('dark');
   });
   const [mounted, setMounted] = useState(false);
   const [inHero, setInHero] = useState(true);
@@ -205,7 +202,13 @@ export default function App() {
               <li><a href="#awards" className="hover:opacity-75">Awards</a></li>
               <li><a href="#contact" className="hover:opacity-75">Contact</a></li>
             </ul>
-
+        </header>
+<div className="p-3">
+<span className="text-xs">darkMode: {String(darkMode)}</span>
+<span className="ml-3 rounded px-2 py-1 bg-neutral-100 dark:bg-neutral-800">
+  Debe oscurecerse en dark
+</span>
+</div>
             <div className="flex items-center gap-3">
               <a
                 href={profile.social.email}
@@ -226,7 +229,8 @@ export default function App() {
             </div>
               </div>
           </nav>
-        </header>
+
+        
 
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
         <div ref={heroSentinelRef} className="h-0" />
