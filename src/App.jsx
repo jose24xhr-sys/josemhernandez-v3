@@ -220,9 +220,7 @@ export default function App() {
 
               {/* Switch en header (solo cuando el hero NO está visible) */}
               <div className="w-[64px] h-8 relative">
-                <div className={`transition-opacity duration-200 ease-out will-change-[opacity] ${mounted && !inHero ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}>
                   <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
-      </div>
             </div>
           </nav>
         </header>
