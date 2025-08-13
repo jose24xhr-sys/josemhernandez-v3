@@ -349,6 +349,7 @@ const [darkMode, setDarkMode] = useState(() => {
         </section>
       </main>
             </div>
+            </div>
 
   );
 }
