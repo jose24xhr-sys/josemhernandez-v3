@@ -250,7 +250,7 @@ export default function App() {
 
 
         {/* HERO */}
-        <section id="home" ref={heroRef}  className="mx-auto max-w-4xl px-4 pt-6 md:pt-10">
+        <section id="home" ref={heroSentinelRef}  className="mx-auto max-w-4xl px-4 pt-6 md:pt-10">
           <div className="mx-auto max-w-[52rem] md:pl-5">
             <div className="grid grid-cols-[auto,1fr] items-center gap-4">
               <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile" className="inline-block">
