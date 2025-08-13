@@ -240,12 +240,9 @@ export default function App() {
        {/* elimina el viejo <div ref={heroSentinelRef} ... /> */}
 
 {inHero && (
-  <button
-    className="fixed bottom-6 left-6 z-50"
-    aria-label="Theme toggle floating"
-  >
+  <div className="fixed bottom-6 left-6 z-50" aria-label="Theme toggle floating">
     <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
-  </button>
+  </div>
 )}
 
 
