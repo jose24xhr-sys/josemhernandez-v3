@@ -111,6 +111,8 @@ const awards = [
 function ThemeToggle({ checked, onToggle, className = "" }) {
   return (
     <button
+      type="button"
+      aria-pressed={checked}
       onClick={onToggle}
       aria-label="Toggle theme"
       className={
@@ -222,6 +224,7 @@ export default function App() {
               <div className="w-[64px] h-8 relative">
                   <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
             </div>
+              </div>
           </nav>
         </header>
 
@@ -338,6 +341,5 @@ export default function App() {
           <footer className="mt-16 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} {profile.name}</footer>
         </section>
       </main>
-    </div>
   );
 }
