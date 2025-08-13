@@ -348,8 +348,6 @@ const [darkMode, setDarkMode] = useState(() => {
           <footer className="mt-16 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} {profile.name}</footer>
         </section>
       </main>
-            </div>
-            </div>
 
   );
 }
