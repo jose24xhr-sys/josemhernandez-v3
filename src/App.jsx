@@ -309,11 +309,11 @@ export default function App() {
   id="awards"
   className="mx-auto max-w-[52rem] px-5 md:px-3 pt-6 md:pt-8 pb-6 md:pb-8 section-fade js-reveal"
 >
-  <h2 className="section-title font-semibold">
-    <Briefcase className="section-title-icon" />
+  <h2 className="flex items-center gap-2 text-xl font-semibold mb-6 md:mb-8">
+    <Briefcase className="h-5 w-5 shrink-0" />
     Awards
   </h2>
-          <div className="mt-6 space-y-4">
+          <div className="space-y-6 md:space-y-8">
             {awards.map((w, i) => (
               <a key={i} href={w.link} className="flex items-center justify-between rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 hover:bg-neutral-50 dark:hover:bg-neutral-900">
                 <span className="text-neutral-700 dark:text-neutral-300">{w.year} — {w.title}</span>
@@ -326,7 +326,7 @@ export default function App() {
         {/* CONTACT */}
         <section
   id="contact"
-  className="mx-auto max-w-[52rem] px-5 md:px-3 pt-6 md:pt-8 pb-10 md:pb-12 section-fade js-reveal"
+  className="mx-auto max-w-[52rem] px-5 md:px-3 pt-6 md:pt-8 pb-6 md:pb-8 section-fade js-reveal"
 >
   <h2 className="section-title font-semibold">
     <Briefcase className="section-title-icon" />
