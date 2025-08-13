@@ -150,29 +150,30 @@ function ThemeToggle({ checked, onToggle, className = "" }) {
 
 /* ── Página principal (antes llamada Portfolio). Export único. ───────────── */
 export default function App() {
-const [darkMode, setDarkMode] = useState(() => {
+  const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("theme");
     if (saved) return saved === "dark";
     return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
   });
   const [mounted, setMounted] = useState(false);
   const [inHero, setInHero] = useState(true);
-  const heroSentinelRef = useRef(null);
+
+  // usa SIEMPRE este ref
+  const heroRef = useRef(null);
 
   useEffect(() => setMounted(true), []);
 
-  // aplica/quita clase dark al <html> (robusto para todo el sitio)
   useEffect(() => {
-     document.documentElement.classList.toggle('dark', darkMode);
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  // observa si el hero está en pantalla para mostrar/ocultar el nombre en el header
+  // observar el HERO
   useEffect(() => {
-    const el = heroSentinelRef.current;
+    const el = heroRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-       ([entry]) => setInHero(entry.isIntersecting),
+      ([entry]) => setInHero(entry.isIntersecting),
       { threshold: 0.6 }
     );
     io.observe(el);
@@ -180,13 +181,12 @@ const [darkMode, setDarkMode] = useState(() => {
   }, []);
 
 
-
   return ( 
         <div className={darkMode ? 'dark' : ''}>
     <main className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-[#0F1720] dark:text-neutral-100">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
-          <nav className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between">
+  <nav className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between">
             {/* Brand (solo visible cuando el hero no está a la vista) */}
             <div className="w-[260px]">
               <a
@@ -237,13 +237,17 @@ const [darkMode, setDarkMode] = useState(() => {
 
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
         <div ref={heroSentinelRef} className="h-0" />
-        {inHero && (
-  <button
-    className="fixed bottom-6 left-6 z-50"
-    aria-label="Theme toggle floating"
-  >
-      <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
+       {/* elimina el viejo <div ref={heroSentinelRef} ... /> */}
+
+{inHero && (
+  <div className="fixed bottom-6 left-6 z-50" aria-label="Theme toggle floating">
+    <ThemeToggle
+      checked={darkMode}
+      onToggle={() => setDarkMode(v => !v)}
+    />
+  </div>
 )}
+
 
         {/* HERO */}
         <section id="home" ref={heroRef}  className="mx-auto max-w-4xl px-4 pt-6 md:pt-10">
@@ -348,6 +352,6 @@ const [darkMode, setDarkMode] = useState(() => {
           <footer className="mt-16 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} {profile.name}</footer>
         </section>
       </main>
-
+</div>
   );
 }
