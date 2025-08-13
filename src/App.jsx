@@ -224,12 +224,6 @@ export default function App() {
               </div>
           </nav>
         </header>
-<div className="p-3">
-<span className="text-xs">darkMode: {String(darkMode)}</span>
-<span className="ml-3 rounded px-2 py-1 bg-neutral-100 dark:bg-neutral-800">
-  Debe oscurecerse en dark
-</span>
-</div>
         
 
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
