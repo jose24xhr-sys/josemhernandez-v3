@@ -235,7 +235,7 @@ export default function App() {
         
 
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
-        <div ref={heroSentinelRef} className="h-0" />
+        <div ref={heroRef} className="h-0" />
        {/* elimina el viejo <div ref={heroSentinelRef} ... /> */}
 
 {inHero && (
