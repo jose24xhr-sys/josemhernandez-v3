@@ -150,9 +150,10 @@ function ThemeToggle({ checked, onToggle, className = "" }) {
 
 /* ── Página principal (antes llamada Portfolio). Export único. ───────────── */
 export default function App() {
-  // theme + sticky name
-  const [darkMode, setDarkMode] = useState(() => {
-     document.documentElement.classList.contains('dark');
+const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
   });
   const [mounted, setMounted] = useState(false);
   const [inHero, setInHero] = useState(true);
@@ -171,8 +172,8 @@ export default function App() {
     const el = heroSentinelRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      (entries) => setInHero(entries[0].isIntersecting),
-      { threshold: 0.25 }
+       ([entry]) => setInHero(entry.isIntersecting),
+      { threshold: 0.6 }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -184,8 +185,8 @@ export default function App() {
         <div className={darkMode ? 'dark' : ''}>
     <main className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-[#0F1720] dark:text-neutral-100">
         {/* Header */}
-        <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80 will-change-[opacity,transform]">
-          <nav className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between translate-z-0">
+        <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
+          <nav className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between">
             {/* Brand (solo visible cuando el hero no está a la vista) */}
             <div className="w-[260px]">
               <a
@@ -220,8 +221,15 @@ export default function App() {
 
               {/* Switch en header (solo cuando el hero NO está visible) */}
               <div className="w-[64px] h-8 relative">
+                <div
+          className={`transition-opacity duration-200 ${
+            mounted && !inHero ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+          aria-hidden={mounted && !inHero ? "false" : "true"}
+        >
                   <ThemeToggle checked={darkMode} onToggle={() => setDarkMode(v => !v)} />
             </div>
+              </div>
               </div>
           </nav>
         </header>
