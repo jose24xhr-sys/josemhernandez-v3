@@ -328,8 +328,8 @@ export default function App() {
   id="contact"
   className="mx-auto max-w-[52rem] px-5 md:px-3 pt-6 md:pt-8 pb-6 md:pb-8 section-fade js-reveal"
 >
-  <h2 className="section-title font-semibold">
-    <Briefcase className="section-title-icon" />
+  <h2 className="flex items-center gap-2 text-xl font-semibold mb-6 md:mb-8">
+    <Briefcase className="h-5 w-5 shrink-0" />
     Let’s make things happen
   </h2>
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
