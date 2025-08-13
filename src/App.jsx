@@ -236,7 +236,7 @@ export default function App() {
 
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
         <div ref={heroRef} className="h-0" />
-       {/* elimina el viejo <div ref={heroSentinelRef} ... /> */}
+       {/* elimina el viejo <div ref={heroRef} ... /> */}
 
 {inHero && (
   <div className="fixed bottom-6 left-6 z-50" aria-label="Theme toggle floating">
