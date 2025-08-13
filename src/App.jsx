@@ -232,7 +232,8 @@ export default function App() {
               </div>
           </nav>
         </header>
-        
+       <div className="fixed bottom-3 right-3 h-4 w-4 rounded-full bg-red-500 dark:bg-green-500 z-[9999]" />
+ 
 
         {/* Sentinela y toggle izquierdo cuando el hero está visible */}
         <div ref={heroRef} className="h-0" />
