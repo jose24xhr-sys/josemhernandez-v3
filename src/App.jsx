@@ -181,7 +181,8 @@ export default function App() {
 
 
   return ( 
-      <main className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-[#0F1720] dark:text-neutral-100">
+        <div className={darkMode ? 'dark' : ''}>
+    <main className="min-h-screen bg-white text-neutral-900 antialiased dark:bg-[#0F1720] dark:text-neutral-100">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80 will-change-[opacity,transform]">
           <nav className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between translate-z-0">
@@ -339,5 +340,7 @@ export default function App() {
           <footer className="mt-16 py-10 text-center text-sm text-neutral-500 dark:text-neutral-400">© {new Date().getFullYear()} {profile.name}</footer>
         </section>
       </main>
+            </div>
+
   );
 }
