@@ -1,6 +1,6 @@
 // src/App.jsx (cleaned)
 import React, { useState, useEffect, useRef } from "react";
-import myPhoto from "./assets/JoseP.jpg"; // usar ruta relativa
+import myPhoto from "../assets/JoseP.jpg"; // usar ruta relativa
 import {
   ArrowUpRight, Linkedin, Mail, X as XIcon,
   BookOpen, Briefcase, FilePenLine, Instagram
